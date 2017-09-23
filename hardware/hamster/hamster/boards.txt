@@ -1,0 +1,41 @@
+# hamster
+#
+menu.device_variant=Variant
+menu.bootloader_version=Bootloader version
+menu.upload_method=Upload method
+
+hamster.bootloader.tool = dfu_util
+hamster.bootloader.file = opencr_boot.bin
+
+hamster.name=hamster
+hamster.upload.maximum_size=262144
+
+hamster.upload.file_type=bin
+hamster.upload.ram.maximum_size=65536
+hamster.upload.flash.maximum_size=262144
+hamster.upload.params.quiet=no
+
+hamster.build.mcu=
+hamster.build.f_cpu=
+hamster.build.board=hamster
+hamster.build.core=arduino
+hamster.build.common_flags=-D__HAMSTER__
+
+hamster.build.ldscript=
+hamster.build.variant=hamster
+hamster.build.variant_system_lib=
+hamster.build.extra_flags=
+
+
+hamster.build.inc1=bsp
+hamster.build.inc2=hw/
+hamster.build.inc3=lib/CMSIS/Device/ST/STM32L4xx/Include
+hamster.build.inc4=lib/STM32L4xx_HAL_Driver/Inc
+hamster.build.inc5=lib/CMSIS/Include
+hamster.build.inc6=
+hamster.build.inc7=
+
+hamster.menu.upload_method.UploadMethod=cmd_run
+hamster.menu.upload_method.UploadMethod.upload.protocol=cmd_run
+hamster.menu.upload_method.UploadMethod.upload.tool=cmd_run
+
