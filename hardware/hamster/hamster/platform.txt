@@ -23,7 +23,7 @@ compiler.path={build.variant.path}/../../../tools/mingw64/bin/
 compiler.c.cmd=gcc
 compiler.c.flags=-c -g -O2 -std=gnu99 {compiler.warning_flags} -MMD -ffunction-sections -fdata-sections --param max-inline-insns-single=500 -DBOARD_{build.variant}
 compiler.c.elf.cmd=g++
-compiler.c.elf.flags=-Os -Wl,--gc-sections
+compiler.c.elf.flags= -Os -Wl,--gc-sections 
 compiler.S.cmd=gcc
 compiler.S.flags=-c -g -x assembler-with-cpp -MMD
 compiler.cpp.cmd=g++
@@ -34,7 +34,7 @@ compiler.objcopy.cmd=objcopy
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 compiler.elf2hex.flags=-O binary
 compiler.elf2hex.cmd=objcopy
-compiler.ldflags=
+compiler.ldflags= -lwinmm
 compiler.size.cmd=size
 compiler.define=-DARDUINO=
 
@@ -80,7 +80,7 @@ recipe.s.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.S.flags} -DF_CPU=
 
 ## Create archives
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
-recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -o "{build.path}/{build.project_name}.exe" "-L{build.path}" -lm {object_files} "{build.path}/{archive_file}"
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -o "{build.path}/{build.project_name}.exe" "-L{build.path}" -lm {object_files} "{build.path}/{archive_file}" {compiler.ldflags}
 # Create eeprom
 recipe.objcopy.eep.pattern=
 
