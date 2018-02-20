@@ -19,7 +19,7 @@ compiler.warning_flags.all=-Wall -Wextra -DDEBUG_LEVEL=DEBUG_ALL
 
 # compiler variables
 # ----------------------
-compiler.path=D:/tools/mingw64/bin/
+compiler.path={build.variant.path}/../../../tools/mingw64/bin/
 compiler.c.cmd=gcc
 compiler.c.flags=-c -g -O2 -std=gnu99 {compiler.warning_flags} -MMD -ffunction-sections -fdata-sections --param max-inline-insns-single=500 -DBOARD_{build.variant}
 compiler.c.elf.cmd=g++
@@ -111,4 +111,4 @@ tools.cmd_run.upload.params.verbose=-d
 tools.cmd_run.upload.params.quiet=n
 #tools.openocd.upload.pattern="{path}/{cmd}" -s {path}/scripts  -f interface/stlink-v2-1.cfg -f target/stm32l4x.cfg -c "program {{{build.path}/{build.project_name}.elf}}"  -c "reset run" -c shutdown
 #tools.openocd.upload.pattern="start cmd /c" {path}/{cmd}
-tools.cmd_run.upload.pattern="d:/cmd_run.bat" {build.path}/{cmd}
+tools.cmd_run.upload.pattern={build.variant.path}/../../../tools/cmd_run/cmd_run.bat {build.path}/{cmd}
